@@ -1,0 +1,151 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: #222;
+  background: #333;
+  font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  overflow-x: hidden;
+}
+
+.container {
+  position: relative;
+  padding: 3rem;
+  background-color: #fafafa;
+  transform-origin: top left;
+  transform: rotateZ(0deg);
+  transition: transform 0.5s linear;
+  z-index: 1;
+}
+
+.container.show-nav {
+  transform: rotateZ(-20deg);
+}
+
+/** Nav Button */
+.nav-button {
+  position: absolute;
+  top: -6.25rem;
+  left: -6.25rem;
+  width: 12.5rem;
+  height: 12.5rem;
+  background: #ff7979;
+  border-radius: 50%;
+  transform-origin: center;
+  transform: rotate(0deg);
+  transition: transform 0.5s linear;
+  z-index: 10;
+}
+
+.show-nav .nav-button {
+  transform: rotate(-80deg);
+}
+
+.menu-icon, .close-icon {
+  position: absolute;
+  color: #fafafa;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.menu-icon svg, .close-icon svg {
+  pointer-events: none;
+}
+
+.menu-icon {
+  top: 65%;
+  left: 58%;
+}
+
+.close-icon {
+  top: 59%;
+  left: 15%;
+}
+
+/** Content */
+
+.content {
+  max-width: 1000px;
+  margin: 3rem auto;
+}
+
+.content h1 {
+  margin: 0;
+  line-height: 1.2;
+}
+
+.content small {
+  color: #444;
+  font-style: italic;
+}
+
+.content p {
+  margin: 1rem 0;
+  line-height: 1.5;
+}
+
+.content img {
+  width: 100%;
+}
+
+.content h3 {
+  margin: 1.17rem 0;
+}
+
+/** Nav */
+nav {
+  position: absolute;
+  bottom: 4rem;
+  left: 0;
+}
+
+nav ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+  padding-left: 2rem;
+  margin: 1rem 0;
+  list-style: none;
+}
+
+nav li {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6rem;
+  color: #fafafa;
+  transform: translateX(-200%);
+  transition: transform 0.4s ease-in;
+}
+
+.container.show-nav + nav li {
+  transform: translateX(0);
+  transition-delay: 0.3s;
+}
+
+.container.show-nav + nav li:nth-of-type(2) {
+  padding-left: 1rem;
+  transition-delay: 0.4s;
+}
+
+.container.show-nav + nav li:nth-of-type(3) {
+  padding-left: 2rem;
+  transition-delay: 0.5s;
+}
+
+nav a {
+  color: #fafafa;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: #ff7979;
+}
